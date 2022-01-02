@@ -1,10 +1,10 @@
 import fs from 'fs';
 import { getSettingsFile } from '.';
 import { logger } from '..';
-import { AvailableSettingsI } from '../../types';
+import { ConfigurableSettingsI } from '../../types';
 
 
-export const createSettingsFile = (defaults: AvailableSettingsI) => {
+export const createSettingsFile = (defaults: ConfigurableSettingsI) => {
   const settingsFile = getSettingsFile();
 
   const settingsFileExists = fs.existsSync(settingsFile);

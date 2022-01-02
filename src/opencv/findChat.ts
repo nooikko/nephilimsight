@@ -1,7 +1,7 @@
 import path from 'path';
 import { runService } from '../node';
 import { getScreen } from '../helpers/image-processing';
-import { TemplateMatcherOutputI } from './types';
+import { ChatAreaI } from '../types';
 import { updateAndSaveCache } from '../helpers/cache/updateAndSaveCache';
 import { logger } from '../helpers';
 
@@ -15,12 +15,9 @@ export const findChat = async () => {
     const screen = '\\\\.\\DISPLAY1';
     const screenshot = await getScreen(screen);
     const output = await runService(path.join(__dirname, 'openCVInstance.js'), {screenshot: screenshot?.toString('base64')});
-    const outputType = output as TemplateMatcherOutputI;
+    const outputType = output as ChatAreaI;
     updateAndSaveCache({
-      CHAT_AREA: {
-        trPoint: outputType.trPoint,
-        blPoint: outputType.blPoint,
-      },
+      CHAT_AREA: outputType,
     });
 
     logger.event('findchat', 'Completed opencv processing. Returning output');

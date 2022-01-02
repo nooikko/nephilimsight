@@ -1,9 +1,9 @@
 import cache from 'memory-cache';
 import fs from 'fs';
-import { AvailableSettingsUpdateI } from '../../types';
+import { ConfigurableSettingsUpdateI } from '../../types';
 import {logger, getSettingsFile, getFullCache} from '..';
 
-export const updateAndSaveCache = (data: AvailableSettingsUpdateI, save = true) => {
+export const updateAndSaveCache = (data: ConfigurableSettingsUpdateI, save = true) => {
   Object.keys(data).forEach((key) => {
     cache.put(key, data[key]);
   });

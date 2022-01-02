@@ -2,7 +2,7 @@
 import * as appInsights from 'applicationinsights';
 import { Envelope } from 'applicationinsights/out/Declarations/Contracts';
 import cache from 'memory-cache';
-import { defaults } from '..';
+import { systemConfig } from '..';
 
 
 const APP_NAME = 'nephilim-sight';
@@ -46,8 +46,8 @@ class Logger {
   // Must be run after configuration/secret values are loaded and before any log messages are executed
   init() {
       appInsights
-        .setup(defaults.INSTRUMENTATION_KEY)
-        .setInternalLogging(defaults.DEBUG, defaults.DEBUG);
+        .setup(systemConfig.INSTRUMENTATION_KEY)
+        .setInternalLogging(systemConfig.DEBUG, systemConfig.DEBUG);
       appInsights.defaultClient.context.tags[
         appInsights.defaultClient.context.keys.cloudRole
       ] = APP_NAME;
@@ -70,7 +70,7 @@ class Logger {
     const exception = new Error(`${makePrefix('ERROR', service)} ${log}`);
     console.log(exception); // eslint-disable-line no-console
 
-    if (!defaults.DISABLE_LOGGING) {
+    if (!systemConfig.DISABLE_LOGGING) {
       this.event(service, {
         log,
         type: 'ERROR',
@@ -98,7 +98,7 @@ class Logger {
       });
     }
 
-    if (!defaults.DISABLE_LOGGING) {
+    if (!systemConfig.DISABLE_LOGGING) {
       this.client.trackEvent({ name: service, properties: trackable });
     }
 
