@@ -35,7 +35,6 @@ const buildCanvas = (data) => {
 };
 
 const showExistingConfig = async (data) => {
-console.log('🚀 ~ file: configured.js ~ line 38 ~ showExistingConfig ~ data', data);
   const canvas = await buildCanvas(data.CHAT_AREA);
   const textContainer = document.getElementById('screen-container');
   const contentContainer = document.getElementById('content-container');

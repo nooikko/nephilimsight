@@ -3,7 +3,6 @@ import cache from 'memory-cache';
 import { runService } from '../node';
 import { getScreen } from '../helpers/image-processing';
 import { ChatAreaI } from '../types';
-import { updateAndSaveCache } from '../helpers/cache/updateAndSaveCache';
 import { logger } from '../helpers';
 
 export const findChat = async () => {

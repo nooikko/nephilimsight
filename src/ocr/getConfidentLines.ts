@@ -26,10 +26,6 @@ export const getConfidentLines = (results: Tesseract.RecognizeResult[]) => {
       const baseline0 = baseline.y0 === cur.baseline.y0;
       return bbox0 || bbox1 || baseline0;
     });
-    if (matchingLines.length > 2) {
-      console.log(`================= Found ${matchingLines.length} matches`);
-      console.log(matchingLines.map((line) => ({ baseline: line.baseline, bbox: line.bbox })));
-    }
 
     if (!matchingLines.length) {
       acc.push(cur);
