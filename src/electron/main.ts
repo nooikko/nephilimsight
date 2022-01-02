@@ -3,9 +3,9 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 import dotenv from 'dotenv';
 import { buildListeners } from './listeners';
-import { loadConfig, logger } from '../helpers';
+import {detectGame, loadConfig, logger } from '../helpers';
 logger.init();
-
+detectGame();
 
 dotenv.config();
 loadConfig();
@@ -25,7 +25,7 @@ function createWindow() {
     },
   });
 
-  mainWindow.loadFile(path.join(__dirname, '../public/index.html'));
+  mainWindow.loadFile(path.join(__dirname, '../public/init.html'));
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {

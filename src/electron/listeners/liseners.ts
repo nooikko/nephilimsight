@@ -1,4 +1,4 @@
-import { confirmChat, getFullCache, selectScreen } from '../../helpers';
+import { confirmChat, detectGame, getFullCache, selectScreen } from '../../helpers';
 import { getScreen, getScreens } from '../../helpers/image-processing';
 import { runParseImages } from '../../ocr';
 import { findChat } from '../../opencv';
@@ -36,5 +36,9 @@ export const listeners: ListenerI[] = [
   {
     channel: 'select-screen',
     callback: selectScreen,
+  },
+  {
+    channel: 'detect-game',
+    callback: detectGame,
   },
 ];
