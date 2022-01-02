@@ -57,7 +57,6 @@ const handleImage = async (data) => {
 window.onload = () => {
   window.Main.on('find-chat', handleImage);
   window.Main.on('get-configuration', (data) => {
-    console.log('🚀 ~ file: chat-detection.js ~ line 60 ~ window.Main.on ~ data', data);
     const { trPoint, blPoint } = data.CHAT_AREA;
 
     if (!trPoint.y || !trPoint.x || !blPoint.y || !blPoint.x) {

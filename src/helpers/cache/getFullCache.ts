@@ -6,7 +6,6 @@ export const getFullCache = () => {
 
     return acc;
   }, {});
-  console.log('🚀 ~ file: getFullCache.ts ~ line 9 ~ output ~ output', output);
 
   return output;
 };

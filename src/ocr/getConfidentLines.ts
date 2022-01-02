@@ -18,7 +18,7 @@ export const getConfidentLines = (results: Tesseract.RecognizeResult[]) => {
     .map(result => result.data.lines)
     .flat(1);
 
-  const aggregateResults = bestResult.data.lines.reduce((acc, cur, index) => {
+  const aggregateResults = bestResult.data.lines.reduce((acc, cur) => {
     // console.log(`Checking index: ${index} of ${bestResult.jobId}`);
     const matchingLines = worseResultsLines.filter(({ bbox, baseline }) => {
       const bbox0 = Math.abs(bbox.y0 - cur.bbox.y0) < 4;

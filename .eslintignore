@@ -9,3 +9,10 @@ dist
 *.css
 postcss.config.js
 tailwind.js
+*.png
+*.jpg
+*.eot
+*.svg
+*.ttf
+*.woff
+*.woff2

@@ -8,7 +8,6 @@ export const createSettingsFile = (defaults: AvailableSettingsI) => {
   const settingsFile = getSettingsFile();
 
   const settingsFileExists = fs.existsSync(settingsFile);
-  console.log('🚀 ~ file: createSettingsFile.ts ~ line 11 ~ createSettingsFile ~ settingsFileExists', settingsFileExists);
 
   if (!settingsFileExists) {
     try {
