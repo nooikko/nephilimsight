@@ -23,7 +23,7 @@ const buildCanvas = (data) => {
       ctx.closePath();
       const textNode = document.createElement('div');
       textNode.classList.add('mb-1');
-      textNode.textContent = 'If the chat is correctly highlighted, click confirm';
+      textNode.textContent = 'If the highlighted area is incorrect, try rescanning';
       div.appendChild(textNode);
       div.appendChild(canvas);
 
