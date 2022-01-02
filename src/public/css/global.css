@@ -11,7 +11,7 @@ html, body {
 
 .find-chat {
   border-radius: 4px;
-  max-width: 100%;
+  max-width: 95%;
   max-height: unset;
   transition: transform 250ms ease-in-out;
   transform-origin: center;

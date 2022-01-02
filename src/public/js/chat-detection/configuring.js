@@ -1,19 +1,20 @@
-const handleButton = () => {
-  window.Main.sendMessage('find-chat');
-  const spinner = document.createElement('i');
-  spinner.className = 'text-2xl animate-spin fas fa-spinner px-2';
-
+const getButton = () => {
   const [button] = document.getElementsByTagName('button');
 
-  button.disabled = true;
-  button.textContent = null;
-  button.appendChild(spinner);
+  return button;
 };
 
-const addFindChatListener = () => {
-  const [button] = document.getElementsByTagName('button');
 
-  button.addEventListener('click', handleButton);
+const setButtonAttributes = (attributes) => {
+  const button = getButton();
+
+  if (attributes.textContent && button.childNodes.length) {
+    button.childNodes = null;
+  }
+
+  Object.keys(attributes).forEach((key) => {
+    button[key] = attributes[key];
+  });
 };
 
 const buildCanvas = (data) => {
@@ -22,6 +23,10 @@ const buildCanvas = (data) => {
     image.onload = () => {
       const div = document.createElement('div');
       div.classList.add('find-chat');
+      div.classList.add('flex');
+      div.classList.add('flex-col');
+      div.classList.add('items-center');
+      div.classList.add('justify-around');
       const canvas = document.createElement('canvas');
       canvas.width = image.width;
       canvas.height = image.height;
@@ -34,15 +39,30 @@ const buildCanvas = (data) => {
       ctx.rect(data.blPoint.x, data.trPoint.y, data.trPoint.x - data.blPoint.x, data.blPoint.y - data.trPoint.y );
       ctx.stroke();
       ctx.closePath();
+      const textNode = document.createElement('div');
+      textNode.classList.add('mb-1');
+      textNode.textContent = 'If the chat is correctly highlighted, click confirm';
+      div.appendChild(textNode);
       div.appendChild(canvas);
-      const [button] = document.getElementsByTagName('button');
-      button.remove();
 
       resolve(div);
     };
     image.src = `data:image/jpeg;base64, ${data.picture}`;
   });
 
+};
+
+const setupSaveHandler = (data) => {
+  const button = getButton();
+
+  setButtonAttributes({
+    disabled: false,
+    textContent: 'Confirm',
+  });
+
+  button.addEventListener('click', () => {
+    window.Main.sendMessage('confirm-chat', data);
+  });
 };
 
 const handleImage = async (data) => {
@@ -52,18 +72,20 @@ const handleImage = async (data) => {
   textContainer.remove();
 
   contentContainer.appendChild(canvas);
+
+
+  setupSaveHandler(data);
+};
+
+const handleSave = (data) => {
+  if (data.status = 'ok') {
+    window.location = './configured.html';
+  }
 };
 
 window.onload = () => {
   window.Main.on('find-chat', handleImage);
-  window.Main.on('get-configuration', (data) => {
+  window.Main.on('confirm-chat', handleSave);
 
-    if (!data.CHAT_AREA) {
-      addFindChatListener();
-    }
-
-    // Do something here to check if there is already a configuration
-  });
-  window.Main.sendMessage('get-configuration');
-
+  window.Main.sendMessage('find-chat');
 };

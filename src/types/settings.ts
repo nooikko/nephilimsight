@@ -14,6 +14,7 @@ interface MatchAreaI {
 export interface ChatAreaI {
   confidence: number;
   trPoint: MatchAreaI;
+  picture: string;
   blPoint: MatchAreaI;
   scale: number;
 }
