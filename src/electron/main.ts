@@ -18,6 +18,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 600,
+    resizable: false,
     webPreferences: {
       nodeIntegration: true,
       preload: path.join(__dirname, './bridge.js'),
