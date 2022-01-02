@@ -10,6 +10,7 @@ export const getSettingsFile = () => {
     throw new Error(error);
   }
 
-  return path.join(getTempDir(), systemConfig.SETTINGS_FILE_NAME);
+  const filePath = path.join(getTempDir(), systemConfig.SETTINGS_FILE_NAME);
 
+  return filePath;
 };

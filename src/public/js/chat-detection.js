@@ -57,9 +57,8 @@ const handleImage = async (data) => {
 window.onload = () => {
   window.Main.on('find-chat', handleImage);
   window.Main.on('get-configuration', (data) => {
-    const { trPoint, blPoint } = data.CHAT_AREA;
 
-    if (!trPoint.y || !trPoint.x || !blPoint.y || !blPoint.x) {
+    if (!data.CHAT_AREA) {
       addFindChatListener();
     }
 

@@ -1,4 +1,4 @@
-import { getRenderCache, selectScreen } from '../../helpers';
+import { getFullCache, selectScreen } from '../../helpers';
 import { getScreen, getScreens } from '../../helpers/image-processing';
 import { runParseImages } from '../../ocr';
 import { findChat } from '../../opencv';
@@ -11,7 +11,7 @@ interface ListenerI {
 export const listeners: ListenerI[] = [
   {
     channel: 'get-configuration',
-    callback: getRenderCache,
+    callback: getFullCache,
   },
   {
     channel: 'get-all-screens',
