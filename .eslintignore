@@ -1,0 +1,11 @@
+.prettierrc.js
+webpack*
+prettier.config.js
+extensions*
+build-assist
+*.html
+build
+dist
+*.css
+postcss.config.js
+tailwind.js

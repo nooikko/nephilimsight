@@ -1,0 +1,70 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #191622;
+  color: #EEE;
+  box-sizing: border-box;
+}
+
+
+.find-chat {
+  border-radius: 4px;
+  max-width: 100%;
+  max-height: unset;
+  transition: transform 250ms ease-in-out;
+  transform-origin: center;
+  box-sizing: border-box;
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.find-chat > canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.screenshot-container {
+  border-radius: 4px;
+  max-width: 230px;
+  max-height: 230px;
+  cursor: pointer;
+  transition: transform 250ms ease-in-out;
+  transform-origin: center;
+  box-sizing: border-box;
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.screenshot-container:hover {
+  transform: scale(1.1);
+  border-color: #575D9E;
+}
+
+.screenshot-container.selected {
+  border-color: #575D9E;
+}
+
+button[type="submit"] {
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  background-color: #575D9E;
+  color: #E1E1E6;
+  font-size: 18px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #6E74AF;
+}
+
+
+button[type="submit"]:disabled {
+  background-color: #32365D;
+  cursor: not-allowed;
+}

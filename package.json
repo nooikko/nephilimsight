@@ -1,0 +1,60 @@
+{
+  "name": "nephilimsight",
+  "version": "1.0.0",
+  "main": "build/electron/main.js",
+  "author": "Emilia Penney <elijahpenney@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "applicationinsights": "^1.7.3",
+    "dotenv": "^10.0.0",
+    "jimp": "^0.16.1",
+    "memory-cache": "^0.2.0",
+    "nodemon": "^2.0.15",
+    "screenshot-desktop": "^1.12.7",
+    "sharp": "^0.29.3",
+    "tesseract.js": "^2.1.5",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/memory-cache": "^0.2.1",
+    "@types/screenshot-desktop": "^1.12.0",
+    "@types/sharp": "^0.29.5",
+    "@types/uuid": "^8.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "autoprefixer": "^10.4.1",
+    "copyfiles": "^2.4.1",
+    "electron": "16.0.5",
+    "electron-builder": "^22.14.5",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "postcss-cli": "^9.1.0",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^3.0.8",
+    "typescript": "^4.5.4"
+  },
+  "scripts": {
+    "start": "nodemon",
+    "dev": "yarn build:css && yarn clean && yarn copy-files && yarn build && electron .",
+    "dryrun": "yarn build:css && yarn clean && yarn copy-files && yarn build",
+    "build": "./node_modules/.bin/tsc",
+    "lint": "eslint --fix \"./src/**/*\" --ext .js --ext .jsx --ext .ts --ext .tsx",
+    "lint:no-fix": "eslint \"./src/**/*\" --ext .js --ext .jsx --ext .ts --ext .tsx",
+    "clean": "rimraf build/",
+    "fix:package": "node ./build-assist/index.js",
+    "build:css": "postcss ./src/public/css/main.css -o ./src/public/css/tailwind.css",
+    "copy:reference-images": "copyfiles -u 1 \"./src/opencv/classes/references/*.png\" \"build\"",
+    "copy:html": "copyfiles -u 1 \"./src/public/**/*\" \"build\"",
+    "copy:package-json": "copyfiles \"./package.json\" \"build\"",
+    "copy:extensions": "copyfiles \"./extensions/*.js\" \"build/\"",
+    "copy:modules": "copyfiles -u 1 ./node_modules/**/* \"build/node_modules\"",
+    "copy:eng-data": "copyfiles \"./eng.traineddata\" \"build/tessdata\"",
+    "copy:env": "copyfiles \"./electron-builder.env\" \"build\"",
+    "copy-files": "yarn copy:reference-images && yarn copy:html && yarn copy:package-json && yarn copy:eng-data && yarn copy:extensions && yarn copy:modules && yarn copy:env",
+    "dist": "yarn clean && yarn build && yarn copy-files && yarn fix:package && electron-builder --dir --projectDir=build/  -c.compression=store -c.mac.identity=null --win portable"
+  },
+  "build": {
+    "asar": false
+  }
+}
