@@ -24,6 +24,7 @@ export interface ConfigurableSettingsI {
   FREQUENCY: number;
   CHAT_AREA?: ChatAreaI;
   USER_ID?: string;
+  RETENTION_COUNT: number;
   [key: string]: number | ChatAreaI | string | undefined;
 }
 
