@@ -1,20 +1,16 @@
 //@ts-nocheck
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
-import dotenv from 'dotenv';
 import { buildListeners } from './listeners';
-import {detectGame, loadConfig, logger } from '../helpers';
+import {loadConfig, logger } from '../helpers';
 logger.init();
-detectGame();
 
-dotenv.config();
 loadConfig();
+logger.local('main', 'Starting Application');
 
 let mainWindow;
 
-
 function createWindow() {
-
   mainWindow = new BrowserWindow({
     width: 1000,
     height: 600,

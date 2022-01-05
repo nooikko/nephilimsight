@@ -8,6 +8,9 @@ html, body {
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none !important;
+}
 
 .find-chat {
   border-radius: 4px;

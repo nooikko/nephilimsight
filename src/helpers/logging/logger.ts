@@ -65,7 +65,6 @@ class Logger {
   }
 
   /** Sends error log message to Application Insights */
-  // TODO: Extend this so that it calls .event to track meta data
   error(service: string, log: string) {
     const exception = new Error(`${makePrefix('ERROR', service)} ${log}`);
     console.log(exception); // eslint-disable-line no-console
@@ -79,6 +78,7 @@ class Logger {
     }
 
   }
+
   /** Sends event log message to Application Insights */
   event(service: string, properties: string | { [key: string]: string | string[] | number | boolean }) {
     const trackable = {
@@ -102,6 +102,10 @@ class Logger {
       this.client.trackEvent({ name: service, properties: trackable });
     }
 
+  }
+
+  local(service: string, message: string) {
+    console.log(`\x1b[36m${this.makePrefix('local', service)}\x1b[0m ${message}`); // eslint-disable-line no-console
   }
 }
 

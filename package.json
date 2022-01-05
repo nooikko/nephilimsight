@@ -1,12 +1,11 @@
 {
   "name": "nephilimsight",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "build/electron/main.js",
   "author": "Emilia Penney <elijahpenney@outlook.com>",
   "license": "MIT",
   "dependencies": {
     "applicationinsights": "^1.7.3",
-    "dotenv": "^10.0.0",
     "jimp": "^0.16.1",
     "memory-cache": "^0.2.0",
     "nodemon": "^2.0.15",
