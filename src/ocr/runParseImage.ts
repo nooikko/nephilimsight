@@ -6,7 +6,7 @@ import { parseImage } from '.';
 export const runParseImages = async () => {
   try {
     const chatArea = cache.get('CHAT_AREA');
-    const screen = '\\\\.\\DISPLAY1';
+    const screen = cache.get('SCREEN');
     const screenshot = await getScreen(screen);
 
     if (screenshot) {
@@ -14,7 +14,7 @@ export const runParseImages = async () => {
       return output;
     }
 
-    logger.error('runparseimage', 'Attempted to parse image but no screenshot was found');
+    logger.local('runparseimage', 'Attempted to parse image but no screenshot was found');
 
   } catch (e) {
     throw e;

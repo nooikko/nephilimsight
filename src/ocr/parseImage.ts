@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { recognizeWords, getConfidentLines } from '.';
+import { recognizeWords, getMostWords } from '.';
 import { trimScreenshot, cleanScreenshot } from '../helpers/image-processing';
 import { AvailableSettingsI } from '../types';
 
@@ -16,10 +16,10 @@ export const parseImage = async (image: string, chatArea: AvailableSettingsI['CH
 
   const ocrOutput = await Promise.all(cleaned.map(i => recognizeWords(i)));
 
-  const highestConfidence = getConfidentLines(ocrOutput);
+  const mostWords = getMostWords(ocrOutput);
 
   return {
-    highestConfidence,
+    mostWords,
     ...ocrOutput,
   };
 };

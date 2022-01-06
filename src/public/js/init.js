@@ -5,7 +5,7 @@ const handleData = (data) => {
   }
 
   setTimeout(() => {
-  window.Main.sendMessage('detect-game');
+    window.Main.sendMessage('detect-game');
   }, 2500);
 };
 
