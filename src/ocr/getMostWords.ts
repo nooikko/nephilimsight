@@ -1,7 +1,6 @@
 import Tesseract from 'tesseract.js';
 
 const checkCharCodes = (word: string) => {
-  console.log(word);
   const values = Array.from(word).reduce((acc, cur) => {
     const code = cur.charCodeAt(0);
     if (code !== 91 && code !== 92 && ((code > 65 && code < 90) || (code > 92 && code < 122))) {
